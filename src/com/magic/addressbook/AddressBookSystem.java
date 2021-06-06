@@ -11,7 +11,7 @@ public class AddressBookSystem {
         while(flag == 1)
         {
             System.out.println(" Welcome to address book program ");
-            System.out.println(" Select a choice : 1. Add 2.Edit  3. Exit");
+            System.out.println(" Select a choice : 1. Add 2.Edit  3.Delete 4.Exit");
             int choice = sc.nextInt();
             switch(choice)
             {
@@ -25,7 +25,14 @@ public class AddressBookSystem {
                 }
                     addressBook.editContact();
                     break;
-                case 3 : flag = 0 ;
+                case 3 : if (addressBook.contactList.isEmpty())
+                {
+                    System.out.println("Contact Not Found");
+                    break;
+                }
+                   addressBook.deleteContact();
+                    break;
+                case 4 : flag = 0 ;
                     break;
                 default: System.out.println(" Enter a valid choice");
                     break;
