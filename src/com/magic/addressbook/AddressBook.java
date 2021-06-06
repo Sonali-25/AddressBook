@@ -46,6 +46,7 @@ public class AddressBook {
     }
     public void deleteContact(){
         Scanner deleteNameInput = new Scanner(System.in);
+        System.out.println("Enter First Name of the Person You Want To Remove");
         String deleteFirstName = deleteNameInput.nextLine();
         for(int increase = 0; increase < contactList.size(); increase++){
             if(contactList.get(increase).getFirstName().equals(deleteFirstName)){
