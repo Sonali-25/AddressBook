@@ -10,6 +10,14 @@ public class AddressBook {
     public void addContact(){
         System.out.println("Enter First Name");
         String firstName=input.nextLine();
+        for (int index = 0 ; index < contactList.size(); index ++)
+        {
+            if(firstName.equals(contactList.get(index).getFirstName()))
+            {
+                System.out.println(" The name already exists ");
+                AddressBookSystem.entryOptions();
+            }
+        }
         System.out.println("Enter Last Name");
         String lastName=input.nextLine();
         System.out.println("Enter Address");
