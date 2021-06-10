@@ -88,6 +88,25 @@ public class AddressBook {
                 System.out.println(cityList);
         }
     }
+    public void countOfPersonsByCity()
+    {
+        int count = 0;
+        Collections.sort(contactList, new SortByName());
+        Scanner cityCountInput = new Scanner(System.in);
+        System.out.println(" Enter the city ");
+        String city = cityCountInput.nextLine();
+        for ( int index = 0 ; index+1 < contactList.size() ; index ++)
+        {
+            if (contactList.get(index).getCity().equals(city))
+                if (contactList.get(index).getCity().equals(contactList.get(index+1).getCity()))
+                {
+                    count += 1 ;
+                }
+
+        }
+        count++;
+        System.out.println(" The number of persons from the city " + city + " is " + count);
+    }
 
 
 
