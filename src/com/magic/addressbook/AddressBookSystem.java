@@ -9,7 +9,7 @@ public class AddressBookSystem {
         int flag = 1 ;
         while(flag == 1)
         {
-            System.out.println(" Select a choice : 1. Add Contact 2.Edit Contact  3.Delete Contact 4.Search by City 5.Exit");
+            System.out.println(" Select a choice : 1. Add Contact 2.Edit Contact  3.Delete Contact 4.Search by City 5.View Person by City 6.Exit");
             int choice = sc.nextInt();
             switch(choice)
             {
@@ -31,7 +31,9 @@ public class AddressBookSystem {
                     break;
                 case 4 : addressBook.searchByCity();
                     break;
-                case 5 : flag = 0 ;
+                case 5 : addressBook.viewPersonByCity();
+                    break;
+                case 6 : flag = 0 ;
                     break;
                 default: System.out.println(" Enter a valid choice");
                     break;
