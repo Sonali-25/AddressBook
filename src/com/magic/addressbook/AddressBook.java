@@ -65,6 +65,18 @@ public class AddressBook {
             }
         }
     }
+    public void searchByCity()
+    {
+        Scanner cityInput = new Scanner(System.in);
+        System.out.println(" Enter the city name you want to get contact details ");
+        String city = cityInput.nextLine();
+        for (AddressBookSystemManage cityList : contactList)
+        {
+            if ( cityList.getCity().equals(city))
+                System.out.println(cityList);
+        }
+
+    }
 
 
 
