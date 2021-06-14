@@ -121,5 +121,35 @@ public class AddressBook {
         List<AddressBookSystemManage> sortedCity = contactList.stream().sorted(sortingCityList).collect(Collectors.toList());
         System.out.println(sortedCity);
     }
+    public void writingContactDetailsToFile() {
+        List<String> allContactList = new ArrayList<String>();
+        if (contactList.size() == 0) {
+            System.out.println("Contact book is empty");
+        } else {
+            for (int index = 0; index < contactList.size(); index++)
+                allContactList.add(contactList.get(index).toString());
+        }
+        File file = new File("D:\\Address Book\\File Handling IO.txt");
+        Writer writer = null;
+        BufferedWriter bufferedWriter = null;
+        try {
+            writer = new FileWriter(file);
+            bufferedWriter = new BufferedWriter(writer);
+            for (String lines : allContactList) {
+                lines = lines + System.getProperty(lines);
+                bufferedWriter.write(lines);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bufferedWriter != null && writer != null)
+                try {
+                    bufferedWriter.close();
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
 }
 
