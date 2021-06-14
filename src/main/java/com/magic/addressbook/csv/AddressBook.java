@@ -115,6 +115,11 @@ public class AddressBook {
         List<AddressBookSystemManage> sortedNames = contactList.stream().sorted(sortingNameList).collect(Collectors.toList());
         System.out.println(sortedNames);
     }
-
+    public void sortingByCity()
+    {
+        Comparator<AddressBookSystemManage> sortingCityList = (firstAddressObject , secondAddessObject) -> firstAddressObject.getCity().compareTo(secondAddessObject.getCity());
+        List<AddressBookSystemManage> sortedCity = contactList.stream().sorted(sortingCityList).collect(Collectors.toList());
+        System.out.println(sortedCity);
+    }
 }
 

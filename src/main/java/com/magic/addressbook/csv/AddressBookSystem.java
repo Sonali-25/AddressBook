@@ -38,7 +38,9 @@ public class AddressBookSystem {
                     break;
                 case 7 : addressBook.sortingByName();
                     break;
-                case 8 : flag = 0 ;
+                case 8 : addressBook.sortingByCity();
+                    break;
+                case 9 : flag = 0 ;
                     break;
                 default: System.out.println(" Enter a valid choice");
                     break;
