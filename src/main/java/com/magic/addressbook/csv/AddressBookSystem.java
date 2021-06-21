@@ -10,7 +10,7 @@ public class AddressBookSystem {
         int flag = 1 ;
         while(flag == 1)
         {
-            System.out.println(" Select a choice : 1. Add Contact 2.Edit Contact  3.Delete Contact 4.Search by City 5.View Person by City 6.Count of Person By City 7.Sorting By Name 8.Sort By City 9.Writing Contacts Details To File 10.Write into Csv File 11.Exit");
+            System.out.println(" Select a choice : 1. Add Contact 2.Edit Contact  3.Delete Contact 4.Search by City 5.View Person by City 6.Count of Person By City 7.Sorting By Name 8.Sort By City 9.Writing Contacts Details To File 10.Write into Csv File 11.Write Into Json 12.Exit");
             int choice = sc.nextInt();
             switch(choice)
             {
@@ -47,7 +47,12 @@ public class AddressBookSystem {
                     wr.writeDataLineByLine();
                 break;
                 }
-                case 11 : flag = 0 ;
+                case 11 : {
+                    CreatingJSONDocument cj = new CreatingJSONDocument();
+                    cj.CreateJson();
+                    break;
+                }
+                case 12 : flag = 0 ;
                     break;
                 default: System.out.println(" Enter a valid choice");
                     break;
