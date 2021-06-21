@@ -1,5 +1,7 @@
 package com.magic.addressbook.csv;
 
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
 import java.util.List;
 import java.util.*;
 import java.util.ArrayList;
@@ -150,6 +152,21 @@ public class AddressBook {
                     e.printStackTrace();
                 }
         }
+    }
+    public void WritingInCsvFile(){
+        List<String> allContactList = new ArrayList<String>();
+        if (contactList.size() == 0) {
+            System.out.println("Contact book is empty");
+        } else {
+            for (int index = 0; index < contactList.size(); index++)
+                allContactList.add(contactList.get(index).toString());
+        }
+        File file = new File("D:\\Address Book Csv\\Assignment CSV.csv");
+        BufferedWriter writer = new BufferedWriter(file);
+        StatefulBeanToCsv <String> BeanToCsv = new StatefulBeanToCsvBuilder<String>(writer).withQuoteChar
+
+
+
     }
 }
 
