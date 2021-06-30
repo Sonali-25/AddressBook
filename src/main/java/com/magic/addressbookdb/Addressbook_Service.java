@@ -12,6 +12,7 @@ public class Addressbook_Service
         System.out.println("1. Retrieve All Records ");
         System.out.println("2. Update Record ");
         System.out.println("3. Retrieve From Particular Date Range");
+        System.out.println("4. Get Contact By City Name");
         int option = sc.nextInt();
         switch(option) {
             case 1:
@@ -22,6 +23,9 @@ public class Addressbook_Service
                 break;
             case 3:
                 ReteriveDataForParticularDateRange();
+                break;
+            case 4:
+                getContactByCity();
                 break;
         }
     }
@@ -42,6 +46,11 @@ public class Addressbook_Service
     private static void ReteriveDataForParticularDateRange() throws SQLException {
         AddressbookRepo addressbookRepo = new AddressbookRepo();
         List<Contact> details = addressbookRepo.findAllForParticularDateRange();
+        details.forEach(System.out::println);
+    }
+    private static void getContactByCity() throws SQLException {
+        AddressbookRepo addressbookRepo = new AddressbookRepo();
+        List<Contact> details = addressbookRepo.getContactByCity();
         details.forEach(System.out::println);
     }
 }
