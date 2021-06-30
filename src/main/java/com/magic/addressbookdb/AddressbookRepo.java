@@ -167,4 +167,31 @@ public class AddressbookRepo {
         }
         return details;
     }
+    public void insertRecord(Contact info) throws SQLException {
+
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver ());
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook_service", "root", "root");
+            statement = connection.createStatement();
+            String query = "insert into addressBook(FirstName, LastName, Address, City, State, Zip, PhoneNo, Email_ID, addDate) "
+                    + "value('"+info.getFirstName()+"','"+info.getLastName()+"','"+info.getAddress()+"','"+info.getCity()+"','"+info.getState()+"','"+info.getZipCode()+"','"+info.getPhoneNo()+ "','"+info.getEmail_ID()+ "','"+info.getDate()+"')";
+            int result = statement.executeUpdate(query);
+            System.out.print("Rows affected : "+result);
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if(connection != null) {
+                statement.close();
+            }
+            if(statement != null) {
+                connection.close();
+            }
+        }
+
+    }
 }
