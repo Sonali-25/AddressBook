@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.*;
 
 public class AddressbookRepo {
     public List<Contact> findAll() throws SQLException {
@@ -47,5 +48,23 @@ public class AddressbookRepo {
             }
         }
         return details;
+    }
+    public void updateContact(String firstName, String phoneNo) {
+        Connection connection = null;
+        PreparedStatement prestatement = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook_service", "root", "root");
+            String query = "update addressbook set PhoneNo = ? where FirstName = ?";
+            prestatement = connection.prepareStatement(query);
+            prestatement.setString(1, phoneNo);
+            prestatement.setString(2, firstName);
+
+            int result = prestatement.executeUpdate();
+            System.out.println("Contact Updated");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
