@@ -45,7 +45,7 @@ public class RestAPIServerTest {
                 contentType(ContentType.JSON).
                 accept(ContentType.JSON).
                 header("Content-Type", "application/json").
-                body(request.toJSONString()).
+                body(request.toString()).
                 when().
                 post("/Contacts").
                 then().
@@ -71,11 +71,28 @@ public class RestAPIServerTest {
                 contentType(ContentType.JSON).
                 accept(ContentType.JSON).
                 header("Content-Type", "application/json").
-                body(request.toJSONString()).
+                body(request.toString()).
                 when().
                 post("/Contacts").
                 then().
                 statusCode(201).
+                log().all();
+    }
+    @Test
+    public void updateExistingRecord_shouldReturn_200statusCode() {
+        JSONObject request = new JSONObject();
+        request.put("firstName", "Pranali" );
+        baseURI ="http://localhost";
+        port = 3000;
+        given().
+                contentType(ContentType.JSON).
+                accept(ContentType.JSON).
+                header("Content-Type", "application/json").
+                body(request.toString()).
+                when().
+                patch("/Contacts/4").
+                then().
+                statusCode(200).
                 log().all();
     }
 }
