@@ -95,4 +95,16 @@ public class RestAPIServerTest {
                 statusCode(200).
                 log().all();
     }
+    @Test
+    public void deleteData_fromExistingRecord_shouldReturn_200statusCode() {
+        baseURI ="http://localhost";
+        port = 3000;
+
+        when().
+                delete("/Contacts/4").
+                then().
+                statusCode(200).
+                log().all();
+
+    }
 }
